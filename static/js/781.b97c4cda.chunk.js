@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkweather_app=self.webpackChunkweather_app||[]).push([[781],{781:function(e,a,p){e.exports=p.p+"static/media/map-marker-dark.3593cfd6fe10a7739d45.svg"}}]);

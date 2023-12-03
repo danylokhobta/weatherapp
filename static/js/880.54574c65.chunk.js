@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkweather_app=self.webpackChunkweather_app||[]).push([[880],{9880:function(e,a,p){e.exports=p.p+"static/media/arrow_dark.ee9951e7b1d4e93b96dc.svg"}}]);
