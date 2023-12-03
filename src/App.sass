@@ -1,0 +1,123 @@
+$above-temperature: 4
+$under-temperature: 2
+$under-location: 0
+$background-clear: #F0ECC6
+$background-partly_cloudy: #C6EEF0
+$background-cloudy: #c3cad9
+$background-rain: #1628C5
+$background-tstorm: #2a2c33
+.App
+  position: relative
+  height: 100vh
+  padding: 10px 0
+  box-sizing: border-box
+  transition: 0.4s
+  &.clean, &.partly_cloudy, &.cloudy, &.snow, &.ice_pellets, &.fog
+    .HomeView
+      color: black
+      .custom-navigation
+        .custom-button
+          background-image: url('./media/arrow_dark.svg')
+      .CurrentWeather
+        .content
+          .map-marker
+            background-image: url('./media/map-marker-dark.svg')
+    .Menu
+      .menu-button
+        span
+          background: black
+  &.tstorm, &.freezing_rain, &.rain
+    .HomeView
+      color: white
+      .custom-navigation
+        .custom-button
+          background-image: url('./media/arrow_light.svg')
+      .CurrentWeather
+        .content
+          .map-marker
+            background-image: url('./media/map-marker-light.svg')
+    .Menu
+      .menu-button
+        span
+          background: white
+  &.clear
+    background-color: $background-clear
+    .HomeView
+      .CurrentWeather
+        .WeatherIconManager
+          top: 50px
+          width: 360px
+          z-index: 4
+  &.partly_cloudy
+    background-color: $background-partly_cloudy
+    .HomeView
+      .CurrentWeather
+        .WeatherIconManager
+          top: -15px
+          width: 480px
+          z-index: 2
+  &.cloudy
+    background-color: $background-cloudy
+    .HomeView
+      .CurrentWeather
+        .WeatherIconManager
+          width: 480px
+          z-index: $under-temperature
+  &.fog
+    background-color: $background-cloudy
+    .HomeView
+      .CurrentWeather 
+        .WeatherIconManager
+          width: 470px
+          z-index: $under-location
+  &.snow
+    background-color: $background-cloudy
+    .HomeView
+      .CurrentWeather
+        .WeatherIconManager
+          width: 487px
+          z-index: $above-temperature
+  &.freezing_rain
+    background-color: $background-rain
+    .HomeView
+      .CurrentWeather 
+        .WeatherIconManager
+          width: 500px
+          z-index: $under-temperature
+  &.ice_pellets
+    background-color: $background-cloudy
+    .HomeView
+      .CurrentWeather 
+        .WeatherIconManager
+          width: 487px
+          z-index: $above-temperature
+  &.tstorm
+    background-color: $background-tstorm
+    .HomeView
+      .CurrentWeather 
+        .WeatherIconManager
+          width: 410px
+          z-index: $under-temperature
+  &.rain
+    background-color: $background-rain
+    .HomeView
+      .CurrentWeather 
+        .WeatherIconManager
+          width: 487px
+          z-index: $above-temperature
+  
+  &.night.partly_cloudy, &.night.clean
+    background-color: $background-tstorm !important
+    .HomeView
+      color: white !important
+      .custom-navigation
+        .custom-button
+          background-image: url('./media/arrow_light.svg')
+      .CurrentWeather
+        .content
+          .map-marker
+            background-image: url('./media/map-marker-light.svg')
+    .Menu
+      .menu-button
+        span
+          background: white

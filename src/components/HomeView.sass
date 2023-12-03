@@ -1,0 +1,38 @@
+.HomeView
+  position: relative
+  height: 100%
+  max-width: 600px
+  margin: 0 auto
+  display: flex
+  align-content: space-around
+  flex-wrap: wrap
+  z-index: 1
+  .custom-navigation
+    width: 100%
+    user-select: none
+    z-index: 10
+    display: flex
+    flex-basis: column
+    justify-content: space-between
+    align-items: center
+    .custom-button
+      position: relative,
+      width: 24px,
+      height: 24px,
+      background-size: cover
+      background-position: center
+      cursor: pointer
+      &.prev
+        rotate: 180deg
+    .location
+      font-weight: 300
+  .location-slider
+    position: relative
+    min-height: 90%
+    box-sizing: border-box
+    overflow: hidden
+    .SwiperSlide
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      align-content: space-between

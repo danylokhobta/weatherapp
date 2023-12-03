@@ -1,0 +1,27 @@
+.DailyWeather
+  position: relative
+  width: 100%
+  padding: 0 15px
+  user-select: none
+  z-index: 2
+  overflow: hidden
+  .card-list
+    display: flex
+    cursor: grab
+    transition: transform 0.1s ease-out
+    scroll-behavior: smooth
+    &:active
+      cursor: grabbing
+    .hour-card
+      padding-right: 20px
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      gap: 8px
+      max-width: 36px
+      flex: 0 0 auto
+      scroll-snap-align: start
+      .WeatherIconManager
+        height: 22px
+        width: 29px
