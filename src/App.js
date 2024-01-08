@@ -7,7 +7,7 @@ import Menu from './components/Menu';
 function App() {
   const [cityForecasts, setCityForecasts] = useState(null);
   const [activeForecast, setActiveForecast] = useState(null);
-  const locations = ['auto:ip', 'Kyiw', 'Bielefeld'];
+  const locations = ['auto:ip', 'Kyiv', 'Bielefeld'];
 
   const currentHour = new Date().getHours();
 
