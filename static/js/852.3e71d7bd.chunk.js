@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkweather_app=self.webpackChunkweather_app||[]).push([[852],{5852:function(e,p,a){e.exports=a.p+"static/media/partly_cloudy.0e1289f18528c0329653.svg"}}]);
