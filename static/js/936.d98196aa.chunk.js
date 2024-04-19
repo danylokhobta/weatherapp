@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkweather_app=self.webpackChunkweather_app||[]).push([[936],{3936:function(e,a,p){e.exports=p.p+"static/media/rain.5136749e9a15e89e2a02.svg"}}]);

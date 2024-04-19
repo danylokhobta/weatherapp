@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkweather_app=self.webpackChunkweather_app||[]).push([[273],{5273:function(e,p,a){e.exports=a.p+"static/media/ice_pellets.d000bfbf1e32e93da377.svg"}}]);
