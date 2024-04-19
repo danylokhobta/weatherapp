@@ -7,15 +7,24 @@ import 'swiper/css/navigation';
 import './HomeView.sass';
 import CurrentWeather from './CurrentWeather';
 import DailyWeather from './DailyWeather';
+import useForecast from '../hooks/useForcast';
+import useActiveForecast from '../hooks/useActiveForecast';
 
-const HomeView = ({ cityForecasts, activeForecast, setActiveForecast }) => {
+const HomeView = () => {
   const [swiper, setSwiper] = useState(null);
+  const { forecasts } = useForecast();
+  const { activeForecast, setActiveForecast } = useActiveForecast();
 
   const CustomNavigation = useCallback(() => {
     return (
       <div className='custom-navigation'>
         <div className="custom-button prev" onClick={() => swiper && swiper.slidePrev()}></div>
-        <div className='location'>{activeForecast !== 'auto:ip' ? activeForecast : 'Current Location'}</div>
+        <div className='location'>
+          {activeForecast !== 'auto:ip' ?
+            activeForecast :
+            `Current Location (${forecasts[activeForecast].location.name})`
+          }
+        </div>
         <div className="custom-button next" onClick={() => swiper && swiper.slideNext()}></div>
       </div>
     );
@@ -43,8 +52,12 @@ const HomeView = ({ cityForecasts, activeForecast, setActiveForecast }) => {
         onSwiper={(swiper) => setSwiper(swiper)}
         onSlideChange={handleSlideChange}
       >
-        {Object.entries(cityForecasts).map(([cityName, cityForecast]) => (
-          <SwiperSlide className='SwiperSlide' key={cityName} data-slide-name={cityName}>
+        {Object.entries(forecasts).map(([cityName, cityForecast]) => (
+          <SwiperSlide
+            className='SwiperSlide'
+            key={cityName}
+            data-slide-name={cityName}
+            >
             <CurrentWeather hourlyForecast={cityForecast} />
             <DailyWeather hourlyForecast={cityForecast} />
           </SwiperSlide>

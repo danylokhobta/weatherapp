@@ -1,11 +1,16 @@
-import { useEffect } from 'react';
-import declarationCodes from './declarationCodes.json';
+import { createContext, useState, useEffect } from 'react';
+import weatherCodeLibrary from '../assets/weatherCodeLibrary.json';
 
-const ForecastFetcher = ({ locations, setCityForecasts }) => {
+const ForecastContext = createContext();
+
+const ForecastProvider = ({ children }) => {
+  const [forecasts, setForecasts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const locations = ['auto:ip', 'Kyiv', 'Bielefeld'];
+  const API_KEY = 'd0334dce1627484b908113957230111';
 
   useEffect(() => {
-    const API_KEY = 'd0334dce1627484b908113957230111'; // Weather API key
-
     const fetchWeatherData = async (url) => {
       const response = await fetch(url);
       if (!response.ok) {
@@ -15,8 +20,8 @@ const ForecastFetcher = ({ locations, setCityForecasts }) => {
     };
 
     const getDecodedWeatherCode = async (code) => {
-      for (const key in declarationCodes) {
-        if (declarationCodes[key].includes(code)) {
+      for (const key in weatherCodeLibrary) {
+        if (weatherCodeLibrary[key].includes(code)) {
           return key;
         }
       }
@@ -59,16 +64,24 @@ const ForecastFetcher = ({ locations, setCityForecasts }) => {
         }
 
         // Pass the object with all forecasts to the parent component
-        setCityForecasts(allForecasts);
+        setForecasts(allForecasts);
+        console.log(allForecasts);
+        setLoading(false);
       } catch (error) {
-        console.error(error);
+        setError(error.message)
       }
     };
 
     fetchData();
-  }, [locations, setCityForecasts]);
+  }, []);
 
-  return null; // You can also return a loading indicator here if needed
+  const value = { forecasts, loading, error };
+
+  return (
+    forecasts && <ForecastContext.Provider value={value}>
+      {children}
+    </ForecastContext.Provider>
+  );
 };
 
-export default ForecastFetcher;
+export {ForecastContext, ForecastProvider};

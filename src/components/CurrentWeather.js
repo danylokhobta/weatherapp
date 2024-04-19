@@ -4,9 +4,6 @@ import WeatherIconManager from './WeatherIconManager';
 const CurrentWeather = ( {hourlyForecast} ) => {
   return (
     <div className='CurrentWeather'>
-      <div className='date'>
-        <h4>Today</h4>
-      </div>
       <div className='content'>
         <WeatherIconManager
           forecast={hourlyForecast.forecast[0]}

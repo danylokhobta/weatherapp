@@ -14,7 +14,7 @@ const WeatherIconManager = ({ forecast, iconFolder = 'weather_icons' }) => {
     if (weatherCode !== null) {
       async function importIcon() {
         try {
-          const iconModule = await import(`../media/${iconFolder}/${timeOfDay}${weatherCode}.svg`);
+          const iconModule = await import(`../assets/${iconFolder}/${timeOfDay}${weatherCode}.svg`);
           setIconUrl(iconModule.default);
         } catch (error) {
           console.error(`Failed to load image for weather code ${weatherCode}:`, error);
